@@ -13,7 +13,7 @@ class Obstacle {
     void show() {
         fill(0);
         rectMode(CENTER);
-        rect(posX, height/2 + h, 50, 50);
+        image(cactusSmall, posX, height/2 + 15);
     }
 
     void move() {
