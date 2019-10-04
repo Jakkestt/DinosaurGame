@@ -7,6 +7,7 @@ int playerXpos = 150;
 int obstacleTime = 0;
 int minObsTime = 60;
 int randomAddition = 0;
+float speed = 0;
 
 ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 
@@ -36,12 +37,13 @@ void addObstacle() {
 void moveObstacle() {
     for (int i = 0; i < obstacles.size(); i++) {
         obstacles.get(i).show();
-        obstacles.get(i).move();
+        obstacles.get(i).move(speed);
         if (obstacles.get(i).posX < 0) {
             obstacles.remove(i);
             i--;
         }
     }
+    speed += 0.02;
 }
 
 void updateObstacle() {

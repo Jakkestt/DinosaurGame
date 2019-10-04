@@ -2,7 +2,6 @@ class Obstacle {
     float posX;
     int w;
     int h;
-    int speed = 5;
 
     Obstacle() {
         posX = width;
@@ -16,7 +15,7 @@ class Obstacle {
         image(cactusSmall, posX, height/2 + 15);
     }
 
-    void move() {
+    void move(float speed) {
         posX -= speed;
     }
 }
