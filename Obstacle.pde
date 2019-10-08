@@ -15,7 +15,9 @@ class Obstacle {
         image(cactusSmall, posX, height/2 + 15);
     }
 
-    void move(float speed) {
-        posX -= speed;
+    void move(float speed, boolean isDead) {
+        if (!isDead) {
+            posX -= speed;
+        }
     }
 }
