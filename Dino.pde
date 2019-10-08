@@ -16,7 +16,6 @@ class Dino {
 
     void show() {
         push();
-        rectMode(CENTER);
         if (dead == true) {
             image(dinoDead, xpos + dinoDead.width/2, groundHeight + height/2 + (ypos - dinoDead.height));
         } else if (duck && ypos == 0) {
@@ -36,6 +35,8 @@ class Dino {
                 image(dinoJump, xpos + dinoJump.width/2, groundHeight + height/2 + (ypos - dinoJump.height));
             }
         }
+        
+        rect(xpos, ypos, dinoRun1.width, dinoRun1.height);
 
         runCount++;
         if (runCount == 5) {
@@ -94,6 +95,12 @@ class Dino {
                 yvel = 0;
                 ypos = 0;
                 inAir = false;
+            }
+        }
+
+        for (int i = 0; i< obstacles.size(); i++) {
+            if (obstacles.get(i).collided(xpos, ypos +dinoRun1.height/2, dinoRun1.width/2, dinoRun1.height)) {
+                dead = true;
             }
         }
     }
