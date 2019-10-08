@@ -36,7 +36,7 @@ class Dino {
             }
         }
         
-        rect(xpos, ypos, dinoRun1.width, dinoRun1.height);
+        //rect(xpos + 50, ypos + height/2 - 15, dinoRun1.width, dinoRun1.height);
 
         runCount++;
         if (runCount == 5) {
@@ -99,7 +99,7 @@ class Dino {
         }
 
         for (int i = 0; i< obstacles.size(); i++) {
-            if (obstacles.get(i).collided(xpos, ypos +dinoRun1.height/2, dinoRun1.width/2, dinoRun1.height)) {
+            if (obstacles.get(i).collided(xpos, ypos + dinoRun1.height/2, dinoRun1.width/2, dinoRun1.height)) {
                 dead = true;
             }
         }
