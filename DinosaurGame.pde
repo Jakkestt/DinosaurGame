@@ -44,7 +44,7 @@ void draw() {
     displayScore();
     dino.show();
     dino.update();
-    line(0, height/2 + 85, width, height/2 + 85);
+    line(0, groundHeight + 70, width, groundHeight + 70);
     updateObstacle();
     if (dead) {
         respawn();
