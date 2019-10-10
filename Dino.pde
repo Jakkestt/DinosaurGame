@@ -15,24 +15,23 @@ class Dino {
     }
 
     void show() {
-        push();
         if (dead == true) {
-            image(dinoDead, xpos + dinoDead.width/2, groundHeight + height/2 + (ypos - dinoDead.height));
+            image(dinoDead, playerXpos - dinoDead.width/2, height - groundHeight + (ypos - dinoDead.height));
         } else if (duck && ypos == 0) {
             if (runCount < 0) {
-               image(dinoDuck1, xpos + dinoDuck1.width/2, groundHeight + height/2 + (ypos - dinoDuck1.height));
+                image(dinoDuck1, playerXpos - dinoDuck1.width/2, height - groundHeight - (ypos + dinoDuck1.height));
             } else {
-                 image(dinoDuck2, xpos + dinoDuck2.width/2, groundHeight + height/2 + (ypos - dinoDuck2.height));
+                image(dinoDuck2, playerXpos - dinoDuck2.width/2, height - groundHeight - (ypos + dinoDuck2.height));
             }
         } else {
             if (ypos == 0) {
                 if (runCount < 0) {
-                    image(dinoRun1, xpos + dinoRun1.width/2, groundHeight + height/2 + (ypos - dinoRun1.height));
+                    image(dinoRun1, playerXpos - dinoRun1.width/2, height - groundHeight - (ypos + dinoRun1.height));
                 } else {
-                    image(dinoRun2, xpos + dinoRun2.width/2, groundHeight + height/2 + (ypos - dinoRun2.height));
+                    image(dinoRun2, playerXpos - dinoRun2.width/2, height - groundHeight - (ypos + dinoRun2.height));
                 }
             } else {
-                image(dinoJump, xpos + dinoJump.width/2, groundHeight + height/2 + (ypos - dinoJump.height));
+                image(dinoJump, playerXpos - dinoJump.width/2, height - groundHeight + (ypos - dinoJump.height));
             }
         }
         
@@ -42,8 +41,6 @@ class Dino {
         if (runCount == 5) {
             runCount = -5;
         }
-
-        pop();
     }
 
     void jump(boolean isJumping) {
@@ -72,6 +69,11 @@ class Dino {
 
     void die(boolean isDead) {
         dead = isDead;       
+    }
+
+    void respawn() {
+        dead = false;
+        ypos = 0;
     }
 
     void duck(boolean isDucking) {
