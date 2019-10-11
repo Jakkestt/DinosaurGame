@@ -105,6 +105,18 @@ class Dino {
                 dead = true;
             }
         }
+
+        for (int i = 0; i < birds.size(); i++) {
+            if (duck && ypos == 0) {
+                if (birds.get(i).collided(xpos, ypos + dinoDuck1.height*2, dinoDuck1.width*0.5, dinoDuck1.height)) {
+                    dead = true;
+                }
+            } else {
+                if (birds.get(i).collided(xpos, ypos + dinoRun1.height/2, dinoRun1.width*0.5, dinoRun1.height)) {
+                    dead = true;
+                }
+            }
+        }
     }
 
     boolean returnDead() {
