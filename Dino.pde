@@ -15,6 +15,7 @@ class Dino {
     }
 
     void show() {
+        //rect(playerXpos - dinoDead.width/2, height - groundHeight + (ypos - dinoDead.height), dinoRun1.width, dinoRun1.height);
         if (dead == true) {
             image(dinoDead, playerXpos - dinoDead.width/2, height - groundHeight + (ypos - dinoDead.height));
         } else if (duck && ypos == 0) {
@@ -34,7 +35,7 @@ class Dino {
                 image(dinoJump, playerXpos - dinoJump.width/2, height - groundHeight + (ypos - dinoJump.height));
             }
         }
-        
+
         //rect(xpos + 50, ypos + height/2 - 15, dinoRun1.width, dinoRun1.height);
 
         runCount++;
@@ -51,7 +52,7 @@ class Dino {
         } else {
             gravity = 1.2;
         }
-    } 
+    }
 
     void event() {
         if (keyPressed) {
@@ -68,7 +69,7 @@ class Dino {
     }
 
     void die(boolean isDead) {
-        dead = isDead;       
+        dead = isDead;
     }
 
     void respawn() {
@@ -102,11 +103,11 @@ class Dino {
 
         for (int i = 0; i < birds.size(); i++) {
             if (duck && ypos == 0) {
-                if (birds.get(i).collided(xpos, ypos + dinoDuck1.height/2, dinoDuck1.width*0.8, dinoDuck1.height)) {
+                if (birds.get(i).collided(playerXpos - dinoDuck1.width/2, height - groundHeight + (ypos - dinoDuck1.height), dinoDuck1.width, dinoDuck1.height)) {
                     dead = true;
                 }
             } else {
-                if (birds.get(i).collided(xpos, ypos, dinoRun1.width*0.5, dinoRun1.height)) {
+                if (birds.get(i).collided(playerXpos - dinoRun1.width/2, height - groundHeight + (ypos - dinoRun1.height), dinoRun1.width, dinoRun1.height)) {
                     dead = true;
                 }
             }
@@ -116,7 +117,7 @@ class Dino {
     boolean returnDead() {
         return dead;
     }
-    
+
     void update() {
         move();
         event();

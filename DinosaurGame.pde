@@ -59,7 +59,7 @@ void draw() {
 void addObstacle() {
     int tempInt;
     tempInt = floor(random(3));
-    if (score > 1 && random(1) < 5) {
+    if (score > 1000 && random(1) < 5) {
         Bird temp = new Bird(tempInt);
         birds.add(temp);
     } else {

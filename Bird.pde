@@ -30,7 +30,7 @@ class Bird {
         } else {
             image(bird2, xpos - bird2.width/2, height - groundHeight - (ypos + bird2.height - 20));
         }
-        
+
         flapCount++;
         if (flapCount > 15) {
             flapCount = -15;
@@ -44,19 +44,20 @@ class Bird {
     }
 
     boolean collided(float playerX, float playerY, float playerWidth, float playerHeight) {
-        float playerLeft = playerX + playerWidth/2;
-        float playerRight = playerX - playerWidth/2;
-        float thisLeft = xpos - w/2;
-        float thisRight = xpos + w/2;
-        rectMode(CENTER);
-        rect(playerX, playerY, playerWidth, playerHeight);
+        float playerXpos = playerX + 50;
+        float playerYpos = playerY + 50;
+        float birdXpos = xpos - bird1.width/2 + 50;
+        float birdYpos = height - groundHeight - (ypos + bird1.height - 20) + 50;
+        //rect(playerXpos, playerYpos, playerWidth, playerHeight);
+        //rect(birdXpos, birdYpos, bird1.width, bird1.height);
+        //push();
+        //fill(0);
+        //text(birdYpos, 100, 30);
+        //text(playerYpos + playerHeight/2, 100, 60);
+        //pop();
 
-        if ((playerLeft <= thisRight && playerRight >= thisLeft ) || (thisLeft <= playerRight && thisRight >= playerLeft)) {
-            float playerUp = playerY + playerHeight/2;
-            float playerDown = playerY - playerHeight/2;
-            float thisUp = ypos + h/2;
-            float thisDown = ypos - h/2;
-            if (playerDown <= thisUp && playerUp >= thisDown) {
+        if (birdXpos - playerWidth <= playerXpos && birdXpos + playerWidth >= playerXpos) {
+            if (playerYpos + playerHeight/2 >= birdYpos - bird1.height/2 && playerYpos - playerHeight/2 <= birdYpos + bird1.height/2) {
                 return true;
             }
         }
