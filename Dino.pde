@@ -1,7 +1,7 @@
 class Dino {
     float gravity = 10;
-    float speed = 5;
     float xpos = 100;
+    float speed = 5;
     float ypos = 0;
     float yvel = 0;
     boolean inAir = false;
