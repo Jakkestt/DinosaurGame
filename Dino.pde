@@ -101,6 +101,13 @@ class Dino {
             }
         }
 
+        for (int i = 0; i< obstacles.size(); i++) {
+            if (obstacles.get(i).collided(playerXpos, ypos +dinoRun1.height/2, dinoRun1.width*0.5, dinoRun1.height)) {
+                dead = true;
+            }
+        }
+
+
         for (int i = 0; i < birds.size(); i++) {
             if (duck && ypos == 0) {
                 if (birds.get(i).collided(playerXpos - dinoDuck1.width/2, height - groundHeight + (ypos - dinoDuck1.height), dinoDuck1.width, dinoDuck1.height)) {

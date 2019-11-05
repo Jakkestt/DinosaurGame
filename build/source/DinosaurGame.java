@@ -211,8 +211,8 @@ class Bird {
 }
 class Dino {
     float gravity = 10;
-    float speed = 5;
     float xpos = 100;
+    float speed = 5;
     float ypos = 0;
     float yvel = 0;
     boolean inAir = false;
@@ -312,6 +312,13 @@ class Dino {
             }
         }
 
+        for (int i = 0; i< obstacles.size(); i++) {
+            if (obstacles.get(i).collided(playerXpos, ypos +dinoRun1.height/2, dinoRun1.width*0.5f, dinoRun1.height)) {
+                dead = true;
+            }
+        }
+
+
         for (int i = 0; i < birds.size(); i++) {
             if (duck && ypos == 0) {
                 if (birds.get(i).collided(playerXpos - dinoDuck1.width/2, height - groundHeight + (ypos - dinoDuck1.height), dinoDuck1.width, dinoDuck1.height)) {
@@ -377,19 +384,18 @@ class Obstacle {
 
     public boolean collided(float playerX, float playerY, float playerWidth, float playerHeight) {
 
-        float playerPosX = playerX + playerWidth;
-        float playerPosY = playerY + playerHeight*2;
-        float obstaclePosX = posX;
-        float obstaclePosY = height/2;
+        float playerLeft = playerX - playerWidth/2;
+        float playerRight = playerX + playerWidth/2;
+        float thisLeft = posX - w/2 ;
+        float thisRight = posX + w/2;
 
-        //line(playerX + playerWidth, playerY + playerHeight*2, posX, height/2);
-        if (playerPosX - obstaclePosX >= -playerWidth && playerPosX - obstaclePosX <= playerWidth) {
+        if ((playerLeft<= thisRight && playerRight >= thisLeft ) || (thisLeft <= playerRight && thisRight >= playerLeft)) {
             float playerDown = playerY - playerHeight/2;
-            if (-playerDown <= h) {
+            float thisUp = h;
+            if (-playerDown <= thisUp) {
                 return true;
             }
         }
-
         return false;
     }
 
