@@ -82,7 +82,7 @@ class Dino {
             if (ypos != 0) {
                 gravity = 3;
             }
-            duck = isDucking;
+            duck = true;
         } else {
             duck = false;
         }

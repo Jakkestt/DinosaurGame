@@ -28,18 +28,18 @@ ArrayList<Bird> birds = new ArrayList<Bird>();
 
 void setup() {
     frameRate(60);
-    size(1000, 600);
-    dinoRun1 = loadImage("dinorun0000.png");
-    dinoRun2 = loadImage("dinorun0001.png");
-    dinoDead = loadImage("dinoDead0000.png");
-    dinoJump = loadImage("dinoJump0000.png");
-    dinoDuck1 = loadImage("dinoduck0000.png");
-    dinoDuck2 = loadImage("dinoduck0001.png");
-    cactusSmall = loadImage("cactusSmall0000.png");
-    bigCactus = loadImage("cactusBig0000.png");
-    manySmallCacti = loadImage("cactusSmallMany0000.png");
-    bird1 = loadImage("berd.png");
-    bird2 = loadImage("berd.png");
+    size(1700, 600);
+    dinoRun1 = loadImage("data/dinorun0000.png");
+    dinoRun2 = loadImage("data/dinorun0001.png");
+    dinoDead = loadImage("data/dinoDead0000.png");
+    dinoJump = loadImage("data/dinoJump0000.png");
+    dinoDuck1 = loadImage("data/dinoduck0000.png");
+    dinoDuck2 = loadImage("data/dinoduck0001.png");
+    cactusSmall = loadImage("data/cactusSmall0000.png");
+    bigCactus = loadImage("data/cactusBig0000.png");
+    manySmallCacti = loadImage("data/cactusSmallMany0000.png");
+    bird1 = loadImage("data/berd.png");
+    bird2 = loadImage("data/berd.png");
     font = loadFont("RuneScape-UF-48.vlw");
     dino = new Dino();
 }
@@ -120,19 +120,15 @@ void respawn() {
 
 void displayScore() {
     dead = dino.returnDead();
-    push();
-    pop();
     if (!dead) {
         fill(0);
         textFont(font, 32);
         text(score, 10, 30);
         score++;
     } else {
-        push();
         textFont(font, 50);
         text("You died!", width/4, 100);
         text("You earned " + score + " points.", width/4, 150);
         text("Press R to restart", width/4, 200);
-        pop();
     }
 }
