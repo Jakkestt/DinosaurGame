@@ -59,12 +59,14 @@ void draw() {
 void addObstacle() {
     int tempInt;
     tempInt = floor(random(3));
-    if (score > 1000 && random(1) < 5) {
-        Bird temp = new Bird(tempInt);
-        birds.add(temp);
-    } else {
-        Obstacle temp = new Obstacle(tempInt);
-        obstacles.add(temp);
+    if (!dead) {
+        if (score > 1000 && random(1) < 0.15) {
+            Bird temp = new Bird(tempInt);
+            birds.add(temp);
+        } else {
+            Obstacle temp = new Obstacle(tempInt);
+            obstacles.add(temp);
+        }
     }
     randomAddition = floor(random(60, 120));
 }
@@ -119,11 +121,18 @@ void respawn() {
 void displayScore() {
     dead = dino.returnDead();
     push();
-    textFont(font, 32);
-    fill(0);
-    text(score, 10, 30);
     pop();
     if (!dead) {
+        fill(0);
+        textFont(font, 32);
+        text(score, 10, 30);
         score++;
+    } else {
+        push();
+        textFont(font, 50);
+        text("You died!", width/4, 100);
+        text("You earned " + score + " points.", width/4, 150);
+        text("Press R to restart", width/4, 200);
+        pop();
     }
 }
